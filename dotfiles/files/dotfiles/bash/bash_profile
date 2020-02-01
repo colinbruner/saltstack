@@ -1,0 +1,14 @@
+# This file is sourced by bash when you log in interactively.
+[ -f ~/.bashrc ] && . ~/.bashrc
+
+# Source color prompt script
+[ -f ~/.colorprompt ] && . ~/.colorprompt
+
+# User specific environment and startup programs
+
+HISTIGNORE="&:ls:history:"
+HISTFILESIZE=100000
+HISTSIZE=100000
+PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/bin:/usr/local/bin:/usr/local/silc/bin:$HOME/bin
+
+export EDITOR HISTIGNORE HISTFILESIZE HISTSIZE PATH

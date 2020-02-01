@@ -1,0 +1,21 @@
+{%- import_yaml "dev/defaults.yml" as default_settings %}
+
+{%- set os_family_map = salt['grains.filter_by']({
+    'Arch': {
+        'default': ''
+    },
+    'Debian': {
+        'default': ''
+    },
+    'RedHat': {
+        'default': ''
+    } 
+}, grain='os_family', merge=salt['pillar.get']('dev:lookup')) %}
+
+{% do default_settings.dev.update(os_family_map) %}
+
+{% set dev = salt['pillar.get'](
+    'dev', 
+    default=default_settings['dev'], 
+    merge=True) 
+%}

@@ -1,0 +1,50 @@
+dev:
+  app:
+    nvim:
+      # version is appended to end of src url
+      src: "https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
+      dest: "/usr/bin/nvim"
+      source_hash: "feb489e3bab6421f5e44a664398bb94a"
+  user:
+    name: cbruner
+    home: "/home/cbruner"
+    shell: "/bin/zsh"
+    groups: 
+      - cbruner
+      - wheel
+    ssh:
+      auth_keys: salt://dotfiles/files/ssh/authorized_keys
+  pip:
+    pkgs:
+      - virtualenv
+      - virtualenvwrapper
+      - requests
+      - neovim
+  pkgs:
+    - zsh
+    - git
+    - tmux
+    - fuse
+    - fuse-devel
+    - python36
+    - python36-devel
+  files:
+    configs:
+      files:
+        - src: salt://dotfiles/files/zsh/configs/zshrc
+          dest: ".zshrc"
+        - src: salt://dotfiles/files/zsh/configs/antigen.zsh
+          dest: ".config/zsh/antigen.zsh"
+        - src: salt://dotfiles/files/git/configs/gitconfig
+          dest: ".gitconfig"
+        - src: salt://dotfiles/files/tmux/tmux.conf
+          dest: ".tmux.conf"
+        - src: salt://dotfiles/files/tmux/tmux-linux.conf
+          dest: ".tmux-linux.conf"
+        - src: salt://dotfiles/files/vim/init.vim
+          dest: ".config/nvim/init.vim"
+        - src: salt://dotfiles/files/vim/plug.vim
+          dest: ".config/nvim/autoload/plug.vim"
+      dirs:
+        - src: salt://dotfiles/files/zsh/configs/zsh.d
+          dest: ".zsh.d"
