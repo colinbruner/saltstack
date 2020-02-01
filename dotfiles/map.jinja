@@ -1,4 +1,4 @@
-{%- import_yaml "dev/defaults.yml" as default_settings %}
+{%- import_yaml "dotfiles/defaults.yml" as default_settings %}
 
 {%- set os_family_map = salt['grains.filter_by']({
     'Arch': {
@@ -10,12 +10,12 @@
     'RedHat': {
         'default': ''
     } 
-}, grain='os_family', merge=salt['pillar.get']('dev:lookup')) %}
+}, grain='os_family', merge=salt['pillar.get']('dotfiles:lookup')) %}
 
-{% do default_settings.dev.update(os_family_map) %}
+{% do default_settings.dotfiles.update(os_family_map) %}
 
-{% set dev = salt['pillar.get'](
-    'dev', 
-    default=default_settings['dev'], 
+{% set dotfiles = salt['pillar.get'](
+    'dotfiles', 
+    default=default_settings['dotfiles'], 
     merge=True) 
 %}

@@ -1,6 +1,6 @@
-{% from "dev/map.jinja" import dev with context %}
+{% from "dotfiles/map.jinja" import dotfiles with context %}
 
-{% set user = dev.user %}
+{% set user = dotfiles.user %}
 
 {% if user %}
 ensure_user:

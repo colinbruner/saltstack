@@ -1,7 +1,7 @@
-{% from "dev/map.jinja" import dev with context %}
+{% from "dotfiles/map.jinja" import dotfiles with context %}
 
-{% set user = dev.user %}
-{% set config = dev.files.configs %}
+{% set user = dotfiles.user %}
+{% set config = dotfiles.files.configs %}
 
 {% if config.files %}
 # All files are installed with implicit user home directory prepend

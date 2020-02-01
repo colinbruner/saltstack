@@ -1,4 +1,4 @@
-dev:
+dotfiles:
   app:
     nvim:
       # version is appended to end of src url

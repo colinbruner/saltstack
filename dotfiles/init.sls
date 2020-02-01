@@ -1,6 +1,7 @@
-{% from "dev/map.jinja" import dev with context %}
+{% from "dotfiles/map.jinja" import dotfiles with context %}
 
-{% set nvim = dev.app.nvim %}
+{% set user = dotfiles.user %}
+{% set nvim = dotfiles.app.nvim %}
 
 include:
   - ./pkgs
@@ -17,6 +18,14 @@ install_nvim:
     - mode: '0755'
     - source: {{ nvim.src }}
     - source_hash: {{ nvim.source_hash }}
+
+# output is rather ugly, but command does work
+install_nvim_pluggins:
+  cmd.run:
+    - name: "/usr/bin/nvim +VimEnter +PlugInstall +qal"
+    - runas: {{ user.name }}
+    - creates: {{ user.home }}/.vim/plugged
+
 {% endif %}
 
 # Link python3 -> python on RedHat/CentOS 8 systems
@@ -29,3 +38,4 @@ python3_symlink:
     - group: root
     - mode: 0755
 {% endif %}
+

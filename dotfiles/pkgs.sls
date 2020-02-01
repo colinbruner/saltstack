@@ -1,7 +1,7 @@
-{% from "dev/map.jinja" import dev with context %}
+{% from "dotfiles/map.jinja" import dotfiles with context %}
 
-{% set pip = dev.pip %}
-{% set pkgs = dev.pkgs %}
+{% set pip = dotfiles.pip %}
+{% set pkgs = dotfiles.pkgs %}
 
 {% if pkgs %}
 install_pkgs:
