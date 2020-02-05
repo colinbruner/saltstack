@@ -1,0 +1,4 @@
+#Add any required envvar overrides to this file, it is sourced from /etc/profile
+
+export SYSTEMD_PAGER=''
+
