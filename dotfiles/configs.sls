@@ -10,6 +10,7 @@ install_config_files:
     - user: {{ user.name }}
     - group: {{ user.name }}
     - mode: '0644'
+    - makedirs: True
     - names:
     {% for file in config.files %}
       - {{ user.home }}/{{ file.dest }}:
