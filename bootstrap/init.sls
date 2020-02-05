@@ -4,6 +4,18 @@
 {% set pip = bootstrap.pip %}
 {% set master_config = bootstrap.files.master_config %}
 
+{% if salt['grains.get']('os') == 'CentOS' %}
+# Statically configure required CentOS repo to install libgit2-devel
+enable_PowerTools_repo:
+  pkgrepo.managed:
+    - name: PowerTools
+    - humanname: CentOS-$releasever - PowerTools
+    - mirrorlist: http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=PowerTools&infra=$infra
+    - gpgcheck: 1
+    - enabled: 1
+    - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+{% endif %}
+
 install_pkgs:
   pkg.installed:
     - pkgs: {{ pkgs }}
