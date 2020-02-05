@@ -1,0 +1,13 @@
+bootstrap:
+  pkgs:
+    - salt-master
+    - python36
+    - python36-devel
+    - libgit2
+  pip:
+    pkgs:
+      - pygit2
+  files:
+    master_config:
+      src: salt://bootstrap/files/salt/configs/master
+      dest: "/etc/salt/master"

@@ -1,0 +1,20 @@
+interface: 0.0.0.0
+worker_threads: 4
+
+file_roots:
+  base:
+    - /srv/salt/base
+
+pillar_roots:
+  base:
+    - /srv/salt/pillar
+
+fileserver_backend:
+  - roots
+  - gitfs
+
+gitfs_provider: pygit2
+gitfs_remotes:
+  - git://github.com/colinbruner/salt-formulas.git
+
+auto_accept: True
