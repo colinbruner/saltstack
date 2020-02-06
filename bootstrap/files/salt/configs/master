@@ -11,10 +11,5 @@ pillar_roots:
 
 fileserver_backend:
   - roots
-  - gitfs
-
-gitfs_provider: pygit2
-gitfs_remotes:
-  - git://github.com/colinbruner/salt-formulas.git
 
 auto_accept: True
