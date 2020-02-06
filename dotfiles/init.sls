@@ -4,9 +4,9 @@
 {% set nvim = dotfiles.app.nvim %}
 
 include:
-  - ./pkgs
-  - ./user
-  - ./configs
+  - .pkgs
+  - .user
+  - .configs
 
 {% if nvim %}
 # Install nvim from app image

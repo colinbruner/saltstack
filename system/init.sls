@@ -5,11 +5,11 @@
 {% set files = system.files %}
 {% set sudoers = system.sudoers %}
 
-install_pkgs:
+install_system_pkgs:
   pkg.installed:
     - pkgs: {{ pkgs }}
 
-install_files:
+install_system_files:
   file.managed:
     - user: 'root'
     - group: 'root'
@@ -34,7 +34,7 @@ update_sshd_{{ line.new }}:
      repl: {{ line.new }}
 {% endfor %}
 
-restart_ssh:
+ensure_sshd_running:
   service.running:
     - name: sshd
       enable: True

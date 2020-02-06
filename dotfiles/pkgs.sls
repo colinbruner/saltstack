@@ -4,13 +4,13 @@
 {% set pkgs = dotfiles.pkgs %}
 
 {% if pkgs %}
-install_pkgs:
+install_dotfile_pkgs:
   pkg.installed:
     - pkgs: {{ pkgs }}
 {% endif %}
 
 {% if pip.pkgs %}
-install_pip_pkgs:
+install_dotfile_pip_pkgs:
   pip.installed:
     - pkgs: {{ pip.pkgs }}
 {% endif %}

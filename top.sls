@@ -1,3 +1,5 @@
 base:
   "*":
+    - system
     - dotfiles
+    - bootstrap

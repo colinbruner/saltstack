@@ -3,7 +3,7 @@
 {% set user = dotfiles.user %}
 
 {% if user %}
-ensure_user:
+ensure_user_{{ user.name }}:
   user.present:
     - name: {{ user.name }}
     - shell: {{ user.shell }}
@@ -15,7 +15,7 @@ ensure_user:
 {% endif %}
 
 {% if user.ssh.auth_keys %}
-ensure_ssh_key:
+install_{{ user.name }}_ssh_key:
   ssh_auth.present:
     - user: {{ user.name }}
     - source: {{ user.ssh.auth_keys }}

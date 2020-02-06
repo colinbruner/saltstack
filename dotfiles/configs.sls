@@ -5,7 +5,7 @@
 
 {% if config.files %}
 # All files are installed with implicit user home directory prepend
-install_config_files:
+install_dotfiles:
   file.managed:
     - user: {{ user.name }}
     - group: {{ user.name }}
