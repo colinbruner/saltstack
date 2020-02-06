@@ -1,3 +1,5 @@
+{% from "bootstrap/map.jinja" import bootstrap with context %}
+
 {% set config = bootstrap.master.config %}
 
 install_master_config:
