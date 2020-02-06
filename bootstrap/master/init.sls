@@ -3,8 +3,8 @@
 {% set config = bootstrap.master.config %}
 
 include:
-  - ./pkgs
-  - ./configs
+  - .pkgs
+  - .configs
 
 start_salt_master:
   service.running:

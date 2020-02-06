@@ -1,12 +1,14 @@
+{% from "bootstrap/map.jinja" import bootstrap with context %}
+
 {% set config = bootstrap.minion.config %}
 
-{% if salt['grains.get']('is_saltmaster') == True %}
+{% if salt['pillar.get']('is_saltmaster', False) %}
 include:
-  - master
+  - .master
 {% endif %}
 
 {#
-# Unnecessary 
+# Unnecessary, using out of the box minion cfg.
 install_minion_config:
   file.managed:
     - name: {{ config.dest }}
