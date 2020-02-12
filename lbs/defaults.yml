@@ -1,0 +1,11 @@
+lbs:
+  pkgs: 
+    - nginx
+  service: nginx
+  config:
+    path: /etc/nginx/conf.d/default.conf
+  key:
+    path: /etc/ssl/private/key.pem
+  cert:
+    path: /etc/ssl/certs/cert.pem
+

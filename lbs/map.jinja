@@ -1,0 +1,18 @@
+{%- import_yaml "lbs/defaults.yml" as default_settings %}
+
+{%- set os_family_map = salt['grains.filter_by']({
+    'Debian': {
+        'default': ''
+    },
+    'RedHat': {
+        'default': ''
+    } 
+}, grain='os_family', merge=salt['pillar.get']('lbs:lookup')) %}
+
+{% do default_settings.lbs.update(os_family_map) %}
+
+{% set lbs = salt['pillar.get'](
+    'lbs', 
+    default=default_settings['lbs'], 
+    merge=True) 
+%}
