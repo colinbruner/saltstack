@@ -8,11 +8,6 @@ install_lb:
   pkg.installed:
     - pkgs: {{ lbs.pkgs }}
 
-enable_lb:
-  service.running:
-    - name: {{ lbs.service }}
-      enable: True
-
 install_config:
   file.managed:
     - name: {{ lbs.config.path }}
@@ -34,4 +29,11 @@ install_cert:
       contents: {{ cert }}
       makedirs: True
 {% endif %}
+
+enable_lb:
+  service.running:
+    - name: {{ lbs.service }}
+      enable: True
+    - watch: 
+      - file: install_config
 

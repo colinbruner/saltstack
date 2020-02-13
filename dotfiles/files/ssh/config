@@ -1,0 +1,24 @@
+###################
+# Global Settings #
+###################
+ForwardAgent yes
+TCPKeepAlive yes
+ServerAliveInterval 60
+Protocol 2
+ControlPath ~/.ssh/cm-%r@%h:%p
+ControlMaster auto
+ControlPersist 10m
+StrictHostKeyChecking no
+
+host salt
+  Hostname salt.home
+  ForwardX11 yes
+  ForwardX11Trusted yes
+
+host lb1
+  Hostname lb1.home
+
+host kube
+  User pirate
+  Hostname node01.home
+  Port 9595
