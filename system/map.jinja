@@ -2,13 +2,20 @@
 
 {%- set os_family_map = salt['grains.filter_by']({
     'Arch': {
-        'default': ''
     },
     'Debian': {
-        'default': ''
+        'pkgs': ['build-essential'],
+        'sudoers' : {
+            'comment': 'cbruner ALL=(ALL) NOPASSWD: ALL',
+            'uncomment': False
+        }
     },
     'RedHat': {
-        'default': ''
+        'pkgs': ['gcc'],
+        'sudoers' : {
+            'comment': False,
+            'uncomment': '.%wheel.*NOPASSWD:.ALL$'
+        }
     } 
 }, grain='os_family', merge=salt['pillar.get']('system:lookup')) %}
 

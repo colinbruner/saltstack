@@ -21,10 +21,20 @@ install_system_files:
         - source: {{ file.src }}
     {%- endfor %}
 
-update_sudoers:
+{% if sudoers.uncomment %}
+uncomment_sudoers:
   file.uncomment:
-    - name: {{ sudoers.file }}
-      regex: {{ sudoers.uncomment }}
+    - name: "/etc/sudoers"
+      regex: "{{ sudoers.uncomment }}"
+{% endif %}
+
+{% if sudoers.comment %}
+add_comment_sudoers:
+  file.append:
+    - name: "/etc/sudoers"
+      text: 
+        - "{{ sudoers.comment }}"
+{% endif %}
 
 {% for line in sshd.replace %}
 update_sshd_{{ line.new }}:

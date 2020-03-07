@@ -1,9 +1,4 @@
 system:
-  pkgs:
-    - gcc
-  sudoers:
-    file: /etc/sudoers
-    uncomment: ".%wheel.*NOPASSWD:.ALL$"
   sshd_config:
     file: /etc/ssh/sshd_config
     replace:
