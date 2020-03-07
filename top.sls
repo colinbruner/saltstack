@@ -1,5 +1,7 @@
 base:
   "*":
     - system
-    - dotfiles
     - bootstrap
+
+  "G@os_family:RedHat":
+    - dotfiles
