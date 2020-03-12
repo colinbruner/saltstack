@@ -47,6 +47,13 @@ if [[ `uname` == 'Darwin' ]]; then
     source $HOME/.zsh.d/osx.zsh
 fi
 
+##########
+# Widgets
+##########
+if $(command -v navi &>/dev/null); then
+    source "$(navi widget zsh)"
+fi
+
 ##################
 ## Login Scripts #
 ##################
