@@ -2,7 +2,7 @@ base:
   "*":
     - system
     - beacons
-    #- bootstrap
+    - bootstrap
 
   "G@os_family:RedHat":
     - dotfiles

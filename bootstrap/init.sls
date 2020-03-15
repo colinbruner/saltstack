@@ -2,12 +2,12 @@
 
 {% set config = bootstrap.minion.config %}
 
+{#
 {% if salt['pillar.get']('is_saltmaster', False) %}
 include:
   - .master
 {% endif %}
 
-{#
 # Unnecessary, using out of the box minion cfg.
 install_minion_config:
   file.managed:
