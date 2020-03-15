@@ -1,0 +1,8 @@
+{% import_yaml 'beacons/defaults.yml' as defaults %}
+
+{% set beacons_conf = salt['pillar.get'](
+  'beacons_conf',
+  default=defaults['beacons_conf'],
+  merge=True
+  )
+%}

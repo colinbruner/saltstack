@@ -12,4 +12,10 @@ pillar_roots:
 fileserver_backend:
   - roots
 
+reactor:
+  - 'salt/minion/*/start':
+    - salt://reactor/startup_tasks.sls
+  - 'salt/beacon/*/diskusage':
+    - salt://reactor/diskusage_write_to_file.sls
+
 auto_accept: True

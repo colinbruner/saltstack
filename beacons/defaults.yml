@@ -1,0 +1,6 @@
+
+beacons_conf:
+  diskusage:
+    - interval: 15
+    - /home: 90%
+    - /app: 90%

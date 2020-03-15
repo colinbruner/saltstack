@@ -9,6 +9,11 @@ install_system_pkgs:
   pkg.installed:
     - pkgs: {{ pkgs }}
 
+{% if salt['grains.get']('os_family') == 'RedHat' %}
+include:
+  - .firewalld
+{% endif %}
+
 install_system_files:
   file.managed:
     - user: 'root'

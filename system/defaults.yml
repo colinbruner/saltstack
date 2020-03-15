@@ -1,4 +1,11 @@
 system:
+  firewall:
+    zones:
+      - name: public
+        services:
+          - cockpit
+          - dhcpv6-client
+          - ssh
   sshd_config:
     file: /etc/ssh/sshd_config
     replace:
