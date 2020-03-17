@@ -3,6 +3,5 @@ base:
     - saltmaster
 
   '*':
-    - schedule
-    - secrets
     - smtp
+    - schedule

@@ -1,0 +1,5 @@
+#!ipxe
+# /var/lib/tftpboot
+
+#chain http://qnap.home/bootmenu.ipxe
+#exit

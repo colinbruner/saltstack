@@ -2,11 +2,6 @@
 
 {% set firewall = system.firewall %}
 
-ensure_firewalld_running:
-  service.running:
-    - name: firewalld
-      enable: True
-
 {% for zone in firewall.zones %}
 manage_{{ zone.name }}_zone:
   firewalld.present:
