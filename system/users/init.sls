@@ -1,8 +1,7 @@
 {% from "system/map.jinja" import system with context %}
 
-{% set users = system.users %}
+{% set user = system.user %}
 
-{% for user in users %}
 ensure_user_{{ user.name }}:
   user.present:
     - name: {{ user.name }}
@@ -13,11 +12,12 @@ ensure_user_{{ user.name }}:
       - {{ group }}
     {% endfor %}
 
-{% if user.ssh.auth_keys | default(False) %}
+{% set ssh = user.ssh %}
+
+{% if ssh.auth_keys | default(False) %}
 install_{{ user.name }}_ssh_key:
   ssh_auth.present:
     - user: {{ user.name }}
-    - source: {{ user.ssh.auth_keys }}
+    - source: {{ ssh.auth_keys }}
     - config: '%h/.ssh/authorized_keys'
 {% endif %}
-{% endfor %}
