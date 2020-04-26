@@ -1,8 +1,6 @@
 # Secret secret!
 
 if [[ `uname` == 'Darwin' ]]; then
-    export SUDOPWD="$(getpass -s root)"
-
     #Required for OSX Brew OpenSSH
     export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
     HOMEBREW_DIR=/usr/local/homebrew

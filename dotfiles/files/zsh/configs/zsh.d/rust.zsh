@@ -2,7 +2,7 @@
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-if [[ $(name) == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
   # Mac
   export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
   export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-apple-darwin/lib
