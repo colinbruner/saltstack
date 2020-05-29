@@ -4,6 +4,7 @@ master:
     - python36
     - python36-devel
   pip:
+    - cffi
     - pygit2
   config:
     file: salt://master/files/config/master

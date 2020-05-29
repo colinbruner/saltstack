@@ -12,6 +12,8 @@ install-master-pkgs:
 
 install-master-pip-pkgs:
   pip.installed:
+    - install_options:
+      - "--prefix=/usr"
     - pkgs: 
     {% for pkg in master.pip %}
       - {{ pkg }}
