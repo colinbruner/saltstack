@@ -1,0 +1,29 @@
+Port 22
+ListenAddress 0.0.0.0
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+SyslogFacility AUTHPRIV
+
+PermitRootLogin no
+
+AuthorizedKeysFile	.ssh/authorized_keys
+
+PasswordAuthentication no
+
+ChallengeResponseAuthentication no
+
+UsePAM yes
+
+X11Forwarding no
+
+PrintMotd no
+
+AcceptEnv LANG LC_*
+
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
+
+Match User cbruner
+        X11Forwarding yes

@@ -4,6 +4,14 @@
     'Arch': {
     },
     'Debian': {
+        'user': { 
+            'name': 'cbruner',
+            'home': '/home/cbruner',
+            'shell': '/bin/bash',
+            'ssh': {
+                'auth_keys' : 'salt:///system/files/ssh/authorized_keys'
+            }
+        },
         'pkgs': ['build-essential'],
         'sudoers' : {
             'comment': 'cbruner ALL=(ALL) NOPASSWD: ALL',
@@ -12,10 +20,15 @@
     },
     'RedHat': {
         'user': { 
+            'name': 'cbruner',
+            'home': '/home/cbruner',
             'groups': ['wheel'],
-            'shell': '/bin/zsh'
+            'shell': '/bin/zsh',
+            'ssh': {
+                'auth_keys' : 'salt:///system/files/ssh/authorized_keys'
+            }
          },
-        'pkgs': ['gcc'],
+        'pkgs': ['gcc', 'git', 'zsh', 'nmap'],
         'sudoers' : {
             'comment': False,
             'uncomment': '.%wheel.*NOPASSWD:.ALL$'
