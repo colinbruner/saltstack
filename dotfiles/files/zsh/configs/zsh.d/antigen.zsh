@@ -15,10 +15,6 @@ antigen bundle robbyrussell/oh-my-zsh lib/key-bindings
 antigen bundle robbyrussell/oh-my-zsh lib/history
 antigen bundle robbyrussell/oh-my-zsh lib/directories
 
-# Pure Theme
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
-
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
