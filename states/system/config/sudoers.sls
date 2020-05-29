@@ -3,7 +3,7 @@
 
 {% from "system/map.jinja" import system with context %}
 
-{% set user = system.user | default('cbruner') %}
+{% set user = system.user.name | default('cbruner') %}
 
 install-nopasswd-user:
   file.managed:
@@ -11,7 +11,7 @@ install-nopasswd-user:
     - user: root
     - group: root
     - mode: 0440
-    - source: salt://system/files/config/sudoers.d/nopasswd-user.j2
+    - source: salt://system/files/sudoers.d/nopasswd-user.j2
     - template: jinja
     - defaults:
-      - user: {{ user }}
+        user: {{ user }}
