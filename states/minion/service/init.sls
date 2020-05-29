@@ -3,5 +3,5 @@
 
 include:
   - .restart
-  - .enabled
+  - .running
 

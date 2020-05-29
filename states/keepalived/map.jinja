@@ -1,0 +1,15 @@
+{%- import_yaml "keepalived/defaults.yml" as default_settings %}
+
+{%- set os_family_map = salt['grains.filter_by']({
+    'Arch': {},
+    'Debian': {},
+    'RedHat': {} 
+}, grain='os_family', merge=salt['pillar.get']('system:lookup')) %}
+
+{% do default_settings.keepalived.update(os_family_map) %}
+
+{% set keepalived = salt['pillar.get'](
+    'keepalived', 
+    default=default_settings['keepalived'], 
+    merge=True) 
+%}

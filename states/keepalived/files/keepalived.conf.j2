@@ -1,0 +1,13 @@
+# File managed by Salt
+
+vrrp_instance VI_1 {
+    state {{ config.state }}
+    interface {{ config.interface | default(br0) }}
+    priority {{ config.priority }}
+
+    virtual_router_id {{ config.router_id | default(33) }}
+    virtual_ipaddress {
+        {{ config.virtual_ipaddress | default(192.168.1.10) }}
+    }
+}
+
