@@ -2,4 +2,5 @@
 # vim: ft=sls
 
 include:
+  - .restart
   - .running

@@ -7,9 +7,9 @@ base:
 
   # Salt and Pepper hosts
   'salt*':
-    - salt
+    - host.salt
   'pepper*':
-    - pepper
+    - host.pepper
 
   'G@os_family:RedHat':
     - os.RedHat
