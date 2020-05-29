@@ -2,12 +2,7 @@ interface: 0.0.0.0
 worker_threads: 8
 
 fileserver_backend:
-  - roots
   - gitfs
-
-pillar_roots:
-  base:
-    - /srv/salt/pillar
 
 pillar_merge_lists: True
 pillar_source_merging_strategy: recurse

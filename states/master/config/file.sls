@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{% from "saltmaster/map.jinja" import master with context %}
+{% from "master/map.jinja" import master with context %}
 
 install-master-config:
   file.managed:

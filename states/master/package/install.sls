@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{% from "saltmaster/map.jinja" import master with context %}
+{% from "master/map.jinja" import master with context %}
 
-install-saltmaster-pkgs:
+install-master-pkgs:
   pkg.installed:
     - pkgs: 
     {% for pkg in master.pkgs %}
-      - {{ pkgs }}
+      - {{ pkg }}
     {% endfor %}
 
-install-saltmaster-pip-pkgs:
+install-master-pip-pkgs:
   pip.installed:
     - pkgs: 
     {% for pkg in master.pip %}
-      - {{ pkgs }}
+      - {{ pkg }}
     {% endfor %}
-
