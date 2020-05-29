@@ -7,7 +7,7 @@ fileserver_backend:
 pillar_merge_lists: True
 pillar_source_merging_strategy: recurse
 
-gitfs_remote:
+gitfs_remotes:
   - https://github.com/colinbruner/saltstack.git:
     - root: states
 
