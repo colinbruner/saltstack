@@ -7,6 +7,7 @@ fileserver_backend:
 pillar_merge_lists: True
 pillar_source_merging_strategy: recurse
 
+gitfs_global_lock: True
 gitfs_remotes:
   - https://github.com/colinbruner/saltstack.git:
     - root: states
@@ -15,6 +16,9 @@ ext_pillar:
   - git:
     - __env__ https://github.com/colinbruner/saltstack.git:
       - root: pillar
+
+jinja_trim_blocks: True
+jinja_lstrip_blocks: True
 
 reactor:
   - 'salt/minion/*/start':
