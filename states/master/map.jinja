@@ -1,0 +1,21 @@
+{%- import_yaml "saltmaster/defaults.yml" as default_settings %}
+
+{%- set os_family_map = salt['grains.filter_by']({
+    'Arch': {
+        'default': ''
+    },
+    'Debian': {
+        'default': ''
+    },
+    'RedHat': {
+        'default': ''
+    } 
+}, grain='os_family', merge=salt['pillar.get']('saltmaster:lookup')) %}
+
+{% do default_settings.saltmaster.update(os_family_map) %}
+
+{% set saltmaster = salt['pillar.get'](
+    'saltmaster', 
+    default=default_settings['saltmaster'], 
+    merge=True) 
+%}

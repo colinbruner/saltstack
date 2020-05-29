@@ -1,0 +1,19 @@
+{%- import_yaml "haproxy/defaults.yml" as default_settings %}
+
+{%- set os_family_map = salt['grains.filter_by']({
+    'Debian': {
+        'default': ''
+    },
+    'RedHat': {
+        'default': ''
+    } 
+}, grain='os_family', merge=salt['pillar.get']('haproxy:lookup')) %}
+
+{% do default_settings.haproxy.update(os_family_map) %}
+
+{% set haproxy = salt['pillar.get'](
+    'haproxy', 
+    default=default_settings['haproxy'],
+    merge=True) 
+%}
+

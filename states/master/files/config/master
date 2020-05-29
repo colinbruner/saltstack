@@ -1,0 +1,28 @@
+interface: 0.0.0.0
+worker_threads: 8
+
+fileserver_backend:
+  - roots
+  - gitfs
+
+pillar_roots:
+  base:
+    - /srv/salt/pillar
+
+pillar_merge_lists: True
+pillar_source_merging_strategy: recurse
+
+gitfs_remote:
+  - https://github.com/colinbruner/saltstack.git:
+    - root: states
+
+ext_pillar:
+  - git:
+    - __env__ https://github.com/colinbruner/saltstack.git:
+      - root: pillar
+
+reactor:
+  - 'salt/minion/*/start':
+    - salt://reactor/startup_tasks.sls
+
+auto_accept: True

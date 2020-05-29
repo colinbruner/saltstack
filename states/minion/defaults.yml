@@ -1,0 +1,5 @@
+---
+
+minion:
+  config:
+    file: salt://minion/files/config/minion
