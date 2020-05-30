@@ -28,6 +28,13 @@
                 'auth_keys' : 'salt:///system/files/ssh/authorized_keys'
             }
          },
+         'firewall': {
+             'zones': [
+                 {'name': 'public',
+                  'services': [ 'cockpit', 'dhcpv6-client', 'ssh']
+                 }
+             ]
+        },
         'pkgs': ['gcc', 'git', 'zsh', 'nmap'],
         'sudoers' : {
             'comment': False,

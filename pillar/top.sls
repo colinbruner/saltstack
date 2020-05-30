@@ -1,19 +1,15 @@
----
 
 base:
   '*':
     - common.smtp
     - common.schedule
 
-  # Salt and Pepper hosts
-  'salt*':
+  # Match by hostname
+  'salt':
     - host.salt
-  'pepper*':
+  'pepper':
     - host.pepper
 
-  'G@os_family:RedHat':
-    - os.RedHat
-
-  'G@saltmaster:True':
-    - saltmaster
-
+  # role specific
+  'G@role:saltmaster':
+    - role.saltmaster

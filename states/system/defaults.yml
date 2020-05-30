@@ -1,13 +1,6 @@
 ---
 
 system:
-  sshd_config:
-    file: /etc/ssh/sshd_config
-    replace:
-      - old: "PermitRootLogin yes"
-        new: "PermitRootLogin no"
-      - old: "PasswordAuthentication yes"
-        new: "PasswordAuthentication no"
   files:
     - src: salt://system/files/configs/sh.local
       dest: "/etc/profile.d/sh.local"

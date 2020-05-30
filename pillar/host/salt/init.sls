@@ -1,4 +1,4 @@
 
 include:
-  - salt.haproxy
-  - salt.keepalived
+  - host.salt.haproxy
+  - host.salt.keepalived

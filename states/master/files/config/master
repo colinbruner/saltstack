@@ -20,8 +20,9 @@ ext_pillar:
     - __env__ https://github.com/colinbruner/saltstack.git:
       - root: pillar
 
-jinja_trim_blocks: True
-jinja_lstrip_blocks: True
+jinja_env:
+  trim_blocks: True
+  lstrip_blocks: True
 
 reactor:
   - 'salt/minion/*/start':

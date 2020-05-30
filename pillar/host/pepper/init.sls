@@ -1,4 +1,4 @@
 
 include:
-  - pepper.haproxy
-  - pepper.keepalived
+  - host.pepper.haproxy
+  - host.pepper.keepalived
