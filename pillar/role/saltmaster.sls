@@ -1,9 +1,9 @@
 
 haproxy:
   config:
-    http_port: 8080
-    https_port: 8443
-    virtual_ip: 192.168.1.10
+    web_port: 8443           # port to serve homepage on
+    stats_port: 9000         # port to serve stats on
+    virtual_ip: 192.168.1.10 # virtual keepalived IP all services are bound to
     backend:
       - name: ip-0
         address: kube1.home:30443

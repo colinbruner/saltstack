@@ -9,7 +9,7 @@ defaults
   timeout queue   1000s
 
 listen stats 
-  bind :9000
+  bind {{ config.virtual_ip }}:{{ config.stats_port }}
   mode http
   stats enable
   stats hide-version
@@ -18,8 +18,8 @@ listen stats
   acl   home_network src 192.168.1.0/24
   stats admin if home_network
 
-frontend https-frontend
-  mode http
+frontend homepage-frontend
+  mode tcp
   # Bind with the name 'https' (for stats) and limit tcp-usertimeout to 30s
   bind {{ config.virtual_ip }}:{{ config.web_port }} name https tcp-ut 30s
   option httplog
@@ -30,7 +30,3 @@ backend homepage-backend
   {% for svr in config.backend %}
   server {{ svr.name }} {{ svr.address }}
   {% endfor %}
-
-backend stats
-  stats enable
-  stats uri /
