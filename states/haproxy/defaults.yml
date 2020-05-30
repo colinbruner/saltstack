@@ -1,6 +1,4 @@
 haproxy:
-  config:
-    file: salt://haproxy/files/haproxy.conf
-  service: haproxy
+  file: "salt://haproxy/files/haproxy.conf.j2"
   pkgs: 
     - haproxy

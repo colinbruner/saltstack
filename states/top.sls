@@ -1,7 +1,9 @@
 base:
   "*":
     - system
+    - minion
     - beacons
   
-  "salt*":
+  "L@salt,pepper":
+    - master
     - haproxy

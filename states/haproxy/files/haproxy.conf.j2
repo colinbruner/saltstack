@@ -1,0 +1,30 @@
+global 
+  maxconn 45000 # Total Max Connections.
+  daemon
+  nbproc  1     # Number of processing cores.
+defaults
+  timeout server 86400000
+  timeout connect 86400000
+  timeout client 86400000
+  timeout queue   1000s
+
+# Redirection to SSL frontend
+frontend homepage_frontend_http
+  bind {{ config.virtual_ip }}:{{ config.http_port }} name http tcp-ut 30s
+  mode http
+  option forwardfor
+  timeout client 10s
+  timeout http-request 10s
+  redirect scheme https
+
+frontend homepage_ssl_forward
+  bind {{ config.virtual_ip }}:{{ config.https_port }} name https tcp-ut 30s
+  default_backend homepage_backend_ssl
+
+backend homepage_backend_ssl
+  option tcp-check
+  tcp-check connect port 43 ssl
+  balance roundrobin 
+  {% for svr in config.backend %}
+  server {{ svr.name }} {{ svr.address }}
+  {% endfor %}
