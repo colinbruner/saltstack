@@ -26,6 +26,7 @@ frontend homepage-frontend
   default_backend homepage-backend
 
 backend homepage-backend
+  mode tcp
   balance roundrobin 
   {% for svr in config.backend %}
   server {{ svr.name }} {{ svr.address }}
