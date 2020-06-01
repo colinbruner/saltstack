@@ -3,6 +3,7 @@ global
   maxconn 256
   nbproc  1
 defaults
+  log global
   timeout client  5s
   timeout server  50s
   timeout connect 5s
@@ -22,12 +23,13 @@ frontend homepage-frontend
   mode tcp
   # Bind with the name 'https' (for stats) and limit tcp-usertimeout to 30s
   bind {{ config.virtual_ip }}:{{ config.web_port }} name https tcp-ut 30s
-  option httplog
+  option tcplog
   default_backend homepage-backend
 
 backend homepage-backend
   mode tcp
   balance roundrobin 
+  option ssl-hello-chk
   {% for svr in config.backend %}
   server {{ svr.name }} {{ svr.address }}
   {% endfor %}
