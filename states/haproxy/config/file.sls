@@ -3,7 +3,6 @@
 
 {% from "haproxy/map.jinja" import haproxy with context %}
 
-# {{ haproxy }}
 install-haproxy-config:
   file.managed:
     - name: /etc/haproxy/haproxy.cfg
