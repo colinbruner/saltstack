@@ -10,7 +10,7 @@ defaults
   timeout queue   1000s
 
 listen stats 
-  bind {{ config.virtual_ip }}:{{ config.stats_port }} ssl crt /etc/ssl/haproxy.crt
+  bind {{ config.virtual_ip }}:{{ config.stats_port }}
   mode http
   stats enable
   stats hide-version
