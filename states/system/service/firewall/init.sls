@@ -2,11 +2,9 @@
 # vim: ft=sls 
 {% from "system/map.jinja" import system with context %}
 
-{% set firewall = system.firewall %}
+{% set firewall = system.firewall | default(None) %}
 
-# {{ firewall }}
-
-{% if salt['grains.get']('os_family') == 'RedHat' %}
+{% if firewall and salt['grains.get']('os_family') == 'RedHat' %}
 include:
   - .service
   - .zones
